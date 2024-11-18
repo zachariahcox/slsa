@@ -76,24 +76,19 @@ be nice to resolve. For example, compromised developer credentials - is that (A)
 or (B)?
 -->
 
-<details><summary>Software producer intentionally submits bad code</summary>
+<details><summary>The organization changes the intent of the repository and creates a malicious revision</summary>
 
-*Threat:* Software producer intentionally submits "bad" code, following all
-proper processes.
+*Threat:* An organization intentionally creates a malicious revision with the intent of harming their consumers.
 
-*Mitigation:* **TODO**
+*Mitigation:*
+This kind of attack cannot be directly mitigated through SLSA controls.
+Tools like the [OSSF Scorecard](https://github.com/ossf/scorecard) can help to quantify the risk of consuming artifacts from specific organizations, but do not fully remove it.
+Trustworthiness scales with transparency, and consumers SHOULD push on their vendors to follow transparency best-practices.
+When transparency is not possible, consumers may choose not to consume the artifact, or may require additional evidence of correctness from a trusted third-party.
 
-*Example:* A popular extension author sells the rights to a new owner, who then
-modifies the code to secretly mine cryptocurrency at the users' expense. SLSA
-does not protect against this, though if the extension were open source, regular
-auditing may discourage this from happening.
+*Example:* The [libxz attack](https://access.redhat.com/security/cve/CVE-2024-3094) and the intentional sabotage of [colors.js and faker.js](https://fossa.com/blog/npm-packages-colors-faker-corrupted/) are clear examples of an organization with an otherwise good reputation intentionally producing malicious code.
 
 </details>
-
-<!--
-**TODO:** More producer threats? Perhaps the attack to xz where a malicious
-contributor gained enhanced privileges through social engineering?
--->
 
 ### (B) Authoring & reviewing
 
