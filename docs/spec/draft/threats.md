@@ -76,7 +76,7 @@ be nice to resolve. For example, compromised developer credentials - is that (A)
 or (B)?
 -->
 
-<details><summary>The organization changes the intent of the repository and creates a malicious revision</summary>
+<details><summary>The organization intentionally creates a malicious revision</summary>
 
 *Threat:* An organization intentionally creates a malicious revision with the intent of harming their consumers.
 
