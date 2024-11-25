@@ -76,7 +76,7 @@ When transparency is not possible, consumers may choose not to consume the artif
 
 </details>
 
-### (B) Authoring & reviewing
+### (B) Modifying the source
 
 An adversary without any special administrator privileges attempts to introduce a change counter to the declared intent of the source by following the producer's official source control process.
 
@@ -135,7 +135,21 @@ Solution: Do not allow such exceptions.
 
 </details>
 
-#### (B2) Evade code review requirements
+<details><summary>Highly-permissioned actor bypasses or disables controls</summary>
+
+*Threat:* Trusted actor with "admin" privileges in a repository submits code by disabling existing controls.
+
+*Mitigation:* All actors must be subject to same controls, whether or not they have
+administrator privileges.
+Changes to the controls themselves should require their own review process.
+
+*Example 1:* A GitHub repository-level admin pushes a change without review, even though GitHub branch protection is enabled.
+Solution: The producer can modify the rule to disallow bypass by administrators, or move the rule to an organization-level ruleset.
+
+*Example 2:* GitHub repository-level admin removes a branch requirement, pushes their change, then re-enables the requirement to cover their tracks.
+Solution: The producer can use higher-permission-level rulesets (such as organization-level) to prevent repository-level tampering.
+
+#### (B2) Evade change management process
 
 <details><summary>Modify code after review</summary>
 
@@ -210,8 +224,10 @@ Solution: The code review tool does not merge contributor-created commits, and i
 
 *Threat:* Two trusted persons collude to author and approve a bad change.
 
-*Mitigation:* This threat is not currently addressed by SLSA. We use "two
-trusted persons" as a proxy for "intent of the software producer".
+*Mitigation:* The producer can arbitrarily increase friction of their policies to reduce risk, such as requiring additional, or more senior reviewers.
+The goal of policy here is to ensure that the approved changes match the intention of the producer for the source.
+Increasing the friction of the policies may make it harder to circumvent, but doing so has diminishing returns.
+Ultimately the producer will need to land upon a balanced risk profile that makes sense for their security posture.
 
 </details>
 <details><summary>Trick reviewer into approving bad code</summary>
@@ -236,29 +252,6 @@ stamping."
 An adversary introduces a change to the source control repository through an
 administrative interface, or through a compromise of the underlying
 infrastructure.
-
-<details><summary>Project owner bypasses or disables controls</summary>
-
-*Threat:* Trusted person with "admin" privileges in a repository submits "bad"
-code bypassing existing controls.
-
-*Mitigation:* All persons are subject to same controls, whether or not they have
-administrator privileges. Disabling the controls requires two-person review (and
-maybe notifies other trusted persons?)
-
-*Example 1:* GitHub project owner pushes a change without review, even though
-GitHub branch protection is enabled. Solution: Enable the "Include
-Administrators" option for the branch protection.
-
-*Example 2:* GitHub project owner disables "Include Administrators", pushes a
-change without review, then re-enables "Include Administrators". This currently
-has no solution on GitHub.
-
-<!--
-> TODO This is implicit but not clearly spelled out in the requirements. We
-> should consider clarifying since most if not all existing platforms do not
-> properly address this threat.
--->
 
 </details>
 <details><summary>Platform admin abuses privileges</summary>
