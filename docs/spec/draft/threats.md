@@ -151,9 +151,10 @@ Solution: Configure the code review rules to require review of the most recent r
 Resetting or "dismissing" votes on a PR introduces substantial friction to the process.
 Depending on the security posture of the source, the producer has a few choices to deal with this situation.
 They may:
-*   Accept this risk. Code review is already expensive and the pros outweigh the cons here.
-*   Dismiss reviews when new changes are added. This is a common outcome when expert code review is required.
-*   Leave previous reviews intact, but require that "at least the last revision must be reviewed by someone."
+
+-   Accept this risk. Code review is already expensive and the pros outweigh the cons here.
+-   Dismiss reviews when new changes are added. This is a common outcome when expert code review is required.
+-   Leave previous reviews intact, but require that "at least the last revision must be reviewed by someone."
 
 </details>
 <details><summary>Submit a change that is unreviewable</summary>
@@ -200,7 +201,6 @@ The produced diff of X + Y contains zero lines of changed code and the reviewer 
 If X is allowed to become reachable from the protected branch, the content may become available in secured contexts, such as developer machines and vulnerable to exploits.
 
 Solution: The code review tool does not merge contributor-created commits, and instead merges a single new commit representing only the reviewed "changes from all commits."
-
 
 </details>
 
