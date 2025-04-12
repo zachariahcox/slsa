@@ -6,23 +6,18 @@
       "version": "3.2"
     }
   },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "bungcip.better-toml", 
-        "dbaeumer.vscode-eslint", 
-        "esbenp.prettier-vscode"
-      ]
-    }
-  },
-  "postCreateCommand": "bundle install && npm install -g netlify-cli",
+  "postCreateCommand": "cd docs && bundle config set --local path 'vendor/bundle' && bundle install && npm install -g netlify-cli && cd ..",
   "forwardPorts": [4000],
   "portsAttributes": {
     "4000": {
       "label": "Jekyll Server"
     }
   },
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
   }
 }
