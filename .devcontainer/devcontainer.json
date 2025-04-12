@@ -1,0 +1,29 @@
+{
+  "name": "Jekyll and Netlify",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/ruby:1": {
+      "version": "3.2"
+    },
+    "ghcr.io/devcontainers/features/netlify-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bungcip.better-toml", 
+        "dbaeumer.vscode-eslint", 
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "bundle install && npm install -g netlify-cli",
+  "forwardPorts": [4000],
+  "portsAttributes": {
+    "4000": {
+      "label": "Jekyll Server"
+    }
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  }
+}
