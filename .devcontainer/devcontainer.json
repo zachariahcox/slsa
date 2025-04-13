@@ -6,7 +6,7 @@
       "version": "3.2"
     }
   },
-  "postCreateCommand": "cd docs && bundle config set --local path 'vendor/bundle' && bundle install && npm install -g netlify-cli && cd ..",
+  "postCreateCommand": "cd www && bundle config set --local path 'vendor/bundle' && bundle install && npm install -g netlify-cli && cd ..",
   "forwardPorts": [4000],
   "portsAttributes": {
     "4000": {
